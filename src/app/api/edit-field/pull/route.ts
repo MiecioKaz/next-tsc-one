@@ -1,27 +1,25 @@
-import clientPromise from "@/app/utils/mongodb";
-import { ObjectId } from "mongodb";
 import { NextResponse } from "next/server";
+import prisma from "@/libs/prismadb";
 
-export async function PUT(request: Request) {
-  const { searchParams } = new URL(request.url);
+export async function POST(request: Request) {
   try {
-    const client = await clientPromise;
-    const db = client.db(process.env.DB_NAME);
-    const id = searchParams.get("id");
-    const imgData = await request.json();
+    const body = await request.json();
+    const { leftImages, siteId } = body;
 
-    const site = await db.collection("sites").updateOne(
-      {
-        _id: new ObjectId(id),
+    const siteRes = await prisma.site.updateMany({
+      where: {
+        id: siteId,
       },
-      {
-        $pull: {
-          siteImgData: { ...imgData },
+      data: {
+        siteImgData: {
+          set: [...leftImages],
         },
-      }
-    );
+      },
+    });
 
-    return NextResponse.json(site);
+    console.log(siteRes);
+
+    return NextResponse.json(siteRes);
   } catch (e) {
     console.error(e);
     if (e instanceof Error) {

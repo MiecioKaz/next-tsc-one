@@ -1,25 +1,45 @@
 import { NextResponse } from "next/server";
-import clientPromise from "@/app/utils/mongodb";
+
+import prisma from "@/libs/prismadb";
 import bcrypt from "bcryptjs";
 
 export async function POST(request: Request) {
   try {
-    const client = await clientPromise;
-    const db = client.db(process.env.DB_NAME);
-    const { name, email, password } = await request.json();
-    const hashPassword = await bcrypt.hash(password, 10);
+    const body = await request.json();
+    const { name, email, password } = body;
 
-    const user = await db.collection("users").insertOne({
-      name,
-      email,
-      password: hashPassword,
+    if (!name || !email || !password) {
+      throw new Error("Missing fields");
+    }
+
+    const exist = await prisma.user.findUnique({
+      where: {
+        email,
+      },
     });
 
-    return NextResponse.json(user);
-  } catch (error) {
-    return NextResponse.json(
-      { message: "An error occured while registering the user." },
-      { status: 500 }
-    );
+    if (exist) {
+      return NextResponse.json(
+        { statusText: "Email already exists" },
+        { status: 400 }
+      );
+    } else {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const user = await prisma.user.create({
+        data: {
+          name,
+          email,
+          hashedPassword,
+        },
+      });
+
+      return NextResponse.json(user);
+    }
+  } catch (e) {
+    console.error(e);
+    if (e instanceof Error) {
+      return new Error(e.message);
+    }
   }
 }

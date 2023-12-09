@@ -1,32 +1,21 @@
-import clientPromise from "@/app/utils/mongodb";
 import { NextResponse } from "next/server";
+import prisma from "@/libs/prismadb";
 
 export async function POST(request: Request) {
   try {
-    const client = await clientPromise;
-    const db = client.db(process.env.DB_NAME);
-    const {
-      name,
-      region,
-      province,
-      address,
-      description,
-      userId,
-      siteImgData: [...siteImgData],
-    } = await request.json();
+    const body = await request.json();
+    const { detailsSet, siteImgSet } = body;
 
-    const site = await db.collection("sites").insertOne({
-      name,
-      region,
-      province,
-      address,
-      description,
-      userId,
-      siteImgData: [...siteImgData],
+    const site = await prisma.site.create({
+      data: {
+        ...detailsSet,
+        siteImgData: { set: [...siteImgSet] },
+      },
     });
-
+    console.log(site);
     return NextResponse.json(site);
   } catch (e) {
+    console.error(e);
     if (e instanceof Error) {
       return new Error(e.message);
     }

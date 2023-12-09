@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
-import frontImage from "/luca-bravo-Yq9MFJpafAg-unsplash.jpg";
+import frontImage from "public/luca-bravo-Yq9MFJpafAg-unsplash.jpg";
+
 // import getBase64static from "../lib/getBase64static";
 
 export default async function Home() {
@@ -13,7 +14,7 @@ export default async function Home() {
       <Image
         src={frontImage}
         fill
-        placeholder="blur"
+        // placeholder="blur"
         // blurDataURL={myBlurDataUrl}
         className="object-cover object-center"
         alt="Photo by Luca Bravo on Unsplash"
