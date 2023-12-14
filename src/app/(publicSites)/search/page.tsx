@@ -8,19 +8,17 @@ const Search = () => {
 
   return (
     <>
-      <div className="w-11/12 mx-auto mt-24">
-        <h1 className="text-center text-2xl font-bold">
+      <div className="w-11/12 mx-auto mt-36">
+        <h1 className="text-center text-xl sm:text-2xl font-bold">
           Select Region and Province
         </h1>
 
-        <div className="relative group w-[350px] h-[450px] md:w-[600px] md:h-[700px] mx-auto mt-20">
+        <div className="relative group w-[300px] h-[400px] md:w-[600px] md:h-[700px] mx-auto mt-6 lg:mt-10">
           <Image
             src={mapImage}
-            // src="/italy-regions-map.jpg"
             fill
             sizes="33vw"
             priority
-            // placeholder="blur"
             className=""
             alt="ontheworldmap.com-Italy"
           />

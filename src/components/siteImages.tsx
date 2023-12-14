@@ -6,7 +6,7 @@ const SiteImages = async ({ url }: { url: string }) => {
   const myBlurDataUrl = await getBase64(url);
   return (
     <div className="p-6 bg-slate-200 overflow-hidden rounded-lg">
-      <div className="relative w-[400px] h-[400px]">
+      <div className="relative w-[300px] sm:w-[400px] h-[300px] sm:h-[400px]">
         <Image
           src={url}
           fill

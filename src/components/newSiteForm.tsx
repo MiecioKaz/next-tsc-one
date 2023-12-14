@@ -8,7 +8,6 @@ import { useMongoDB } from "../hooks/useMongo";
 import { useSession } from "next-auth/react";
 import { ImSpinner3 } from "react-icons/im";
 import { SetStateAction } from "react";
-import axios from "axios";
 
 export default function NewSiteForm({
   regions,

@@ -35,7 +35,6 @@ const DisplayList = async ({
   if (sites) {
     return (
       <>
-        {/* <div className="fixed top-0 w-full z-10 h-20 bg-orange-200"></div> */}
         <div className="mt-32 w-2/3 mx-auto">
           <h2 className="text-center">
             Region:

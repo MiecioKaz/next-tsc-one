@@ -64,7 +64,7 @@ export default function LoginForm() {
             }
             value={formValues.email}
             placeholder="Email Address"
-            className="w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40"
+            className="w-[300px] sm:w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40"
           />
           <input
             required
@@ -75,7 +75,7 @@ export default function LoginForm() {
             }
             value={formValues.password}
             placeholder="Password"
-            className="w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40"
+            className="w-[300px] sm:w-[400px] border border-gray-200 py-2 px-6 bg-zinc-100/40"
           />
           <button
             type="submit"
@@ -105,12 +105,12 @@ export default function LoginForm() {
             Hello {session.user.name}! You are logged in.
           </h1>
           <Link href="/newSite">
-            <div className="w-[400px] bg-green-600 hover:bg-green-400 text-white font-bold cursor-pointer my-4 px-6 py-2">
+            <div className="w-[300px] sm:w-[400px] bg-green-600 hover:bg-green-400 text-white font-bold cursor-pointer my-4 px-6 py-2">
               Create New Site
             </div>
           </Link>
           <Link href="/editSites">
-            <div className="w-[400px] bg-green-600 hover:bg-green-400 text-white font-bold cursor-pointer px-6 py-2">
+            <div className="w-[300px] sm:w-[400px] bg-green-600 hover:bg-green-400 text-white font-bold cursor-pointer px-6 py-2">
               Edit Existing Site
             </div>
           </Link>

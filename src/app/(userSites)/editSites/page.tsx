@@ -37,7 +37,7 @@ const EditSitePage = async () => {
       );
     } else {
       return (
-        <h1 className="text-center text-4xl text-red-400">
+        <h1 className="text-center text-4xl text-red-600">
           You have not created any sites so far!
         </h1>
       );

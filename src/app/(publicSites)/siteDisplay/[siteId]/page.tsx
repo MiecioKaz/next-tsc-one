@@ -27,21 +27,13 @@ const SiteDisplay = async ({ params }: { params: { siteId: string } }) => {
   if (site) {
     return (
       <>
-        <div className="fixed top-0 w-full bg-gradient-to-r from-gray-300 to-teal-400 z-10 h-20"></div>
+        {/* <div className="fixed top-0 w-full bg-gradient-to-l from-gray-100 to-teal-300 z-10 h-20"></div> */}
 
         {!(site instanceof Error) && site.siteImgData.length !== 0 && (
           <div
             className="relative mt-40"
             tabIndex={0}
           >
-            {/* <div className="text-center text-xl w-1/3 mx-auto">
-              <h1 className="text-3xl font-bold mb-4">{site.name}</h1>
-              <h2>
-                {site.province}-{site.region}
-              </h2>
-              <p>{site.address}</p>
-            </div> */}
-
             <div className="flex flex-wrap justify-center gap-4 w-11/12 mx-auto my-6">
               {site.siteImgData.map((imgData) => (
                 <SiteImages

@@ -21,13 +21,13 @@ export default function UserLinks() {
         )}
       </div>
 
-      <div className="absolute -right-20 top-6 hidden group-hover:block w-[500px] h-26 bg-gray-400 border rounded-md text-center py-2">
+      <div className="absolute right-0 sm:-right-20 top-6 hidden group-hover:block w-[300px] sm:w-[500px] h-26 bg-gray-400 border rounded-md text-center py-2">
         {session?.user ? (
           <h1 className="font-bold text-xl text-white">
             Logged in user: {session.user.name}!
           </h1>
         ) : (
-          <span className="font-normal text-sm text-red-800">
+          <span className="font-normal text-sm text-red-600">
             Signup or Login if you want to create new site or edit existing one
           </span>
         )}

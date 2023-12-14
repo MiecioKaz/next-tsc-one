@@ -10,12 +10,11 @@ const MySites = ({ sites }: { sites: Site[] }) => {
 
   return (
     <>
-      {/* {siteIndex === null && ( */}
       <ul className="w-1/2 mx-auto mb-4 text-center">
         {sites.map((site: Site, index: number) => (
           <li
             key={site.id}
-            className="border-2 rounded-md border-slate-300 mt-2"
+            className="border-2 rounded-md border-slate-300 bg-slate-100 mt-2"
           >
             <h1
               className="text-xl cursor-pointer hover:text-orange-500"

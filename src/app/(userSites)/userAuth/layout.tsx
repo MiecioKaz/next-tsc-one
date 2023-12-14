@@ -7,7 +7,6 @@ export default function AuthLayout({
 }) {
   return (
     <section>
-      {/* <div className="fixed top-0 w-full z-10 h-20 bg-orange-200"></div> */}
       <Toaster position="top-center" />
       {children}
     </section>

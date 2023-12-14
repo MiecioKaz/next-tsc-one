@@ -41,21 +41,27 @@ export default async function RootLayout({
         <NextAuthProvider>
           <header>
             <nav className="fixed top-0 z-20 w-full flex items-center bg-transparent text-violet-800 font-bold h-20 pr-10">
-              <div className="w-1/3 pl-10">
+              <div className="w-1/2 sm:w-1/3 pl-10">
                 <Link
                   href="/"
-                  className="font-bold text-3xl text-green-900 hover:text-yellow-800"
+                  className="font-bold text-2xl sm:text-3xl text-green-900 hover:text-yellow-800"
                 >
                   Bel-Sites
                 </Link>
               </div>
-              <div className="flex justify-evenly items-center w-2/3 text-lg">
+              <div className="hidden sm:flex justify-evenly items-center w-2/3 text-lg">
                 <NavLink href="/">Home</NavLink>
                 <NavLink href="/search">Sites</NavLink>
                 <UserLinks />
-                {/* {session && session.user !== undefined && (
-                    <h1>Hi {session.user.name}</h1>
-                  )} */}
+              </div>
+              <div className="absolute right-4 top-2 sm:hidden text-lg">
+                <div>
+                  <NavLink href="/">Home</NavLink>
+                </div>
+                <div className="my-4">
+                  <NavLink href="/search">Sites</NavLink>
+                </div>
+                <UserLinks />
               </div>
             </nav>
           </header>
