@@ -1,22 +1,26 @@
 import prisma from "@/libs/prismadb";
 
-export async function POST(request: Request) {
-  try {
-    const body = await request.json();
-    const { detailsSet, siteImgSet } = body;
+export async function POST(request: Request): Promise<any> {
+  // try {
+  const body = await request.json();
+  const { detailsSet, siteImgSet } = body;
 
-    const data = await prisma.site.create({
-      data: {
-        ...detailsSet,
-        siteImgData: { set: [...siteImgSet] },
-      },
-    });
+  const data = await prisma.site.create({
+    data: {
+      ...detailsSet,
+      siteImgData: { set: [...siteImgSet] },
+    },
+  });
 
+  if (data) {
     return Response.json(data);
-  } catch (e) {
-    console.error(e);
-    if (e instanceof Error) {
-      return new Error(e.message);
-    }
+  } else {
+    throw new Error("Site creation failed");
   }
+  // } catch (e) {
+  //   console.error(e);
+  //   if (e instanceof Error) {
+  //     throw new Error(e.message);
+  //   }
+  // }
 }
