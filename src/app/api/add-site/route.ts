@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import prisma from "@/libs/prismadb";
 
 export async function POST(request: Request) {
@@ -6,14 +5,14 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { detailsSet, siteImgSet } = body;
 
-    const site = await prisma.site.create({
+    const data = await prisma.site.create({
       data: {
         ...detailsSet,
         siteImgData: { set: [...siteImgSet] },
       },
     });
-    console.log(site);
-    return NextResponse.json(site);
+
+    return Response.json(data);
   } catch (e) {
     console.error(e);
     if (e instanceof Error) {

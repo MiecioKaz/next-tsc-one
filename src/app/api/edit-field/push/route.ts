@@ -1,4 +1,3 @@
-import { NextResponse } from "next/server";
 import prisma from "@/libs/prismadb";
 
 export async function POST(request: Request) {
@@ -21,7 +20,7 @@ export async function POST(request: Request) {
     });
 
     console.log(siteRes);
-    return NextResponse.json(siteRes);
+    return Response.json(siteRes);
   } catch (e) {
     console.error(e);
     if (e instanceof Error) {
