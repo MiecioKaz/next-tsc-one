@@ -1,4 +1,5 @@
 import prisma from "@/libs/prismadb";
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   // try {
@@ -11,11 +12,12 @@ export async function POST(request: Request) {
     },
   });
   console.log(siteRes);
-  //   return Response.json(siteRes);
-  // } catch (e) {
-  //   console.error(e);
-  //   if (e instanceof Error) {
-  //     return new Error(e.message);
-  //   }
-  // }
+  if (siteRes) {
+    return NextResponse.json({ statusText: "ok" }, { status: 200 });
+  } else {
+    return NextResponse.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }

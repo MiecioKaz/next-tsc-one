@@ -253,7 +253,7 @@ const EditSiteForm = ({ site }: { site: Site }) => {
             : "Photos are not included"}
         </div>
       </form>
-      <div className="w-1/2 mx-auto mt-4">
+      <div className="w-1/2 mx-auto my-4">
         {!isDeleting && !isEditing && (
           <button
             onClick={() => handleDeleteSite()}
@@ -277,7 +277,9 @@ const EditSiteForm = ({ site }: { site: Site }) => {
         )}
       </div>
       {error && (
-        <button className="w-full h-9 bg-red-500 text-white">{error}</button>
+        <button className="w-full h-9 my-4 bg-red-500 text-white">
+          {error}
+        </button>
       )}
     </>
   );

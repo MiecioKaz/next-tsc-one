@@ -1,5 +1,4 @@
 import axios, { AxiosResponse } from "axios";
-import { Site } from "@/types/types";
 
 type Details = {
   name: string;
@@ -43,7 +42,7 @@ export const useMongoDB = () => {
         detailsSet,
         siteId,
       });
-      const responseData: { count: number } = response.data;
+      const responseData = response.data;
       console.log(responseData);
       return responseData;
     } catch (error) {
@@ -68,7 +67,7 @@ export const useMongoDB = () => {
         imgData,
         siteId,
       });
-      const responseData: { count: number } = response.data;
+      const responseData = response.data;
       console.log(responseData);
       return responseData;
     } catch (error) {
@@ -93,7 +92,7 @@ export const useMongoDB = () => {
         leftImages,
         siteId,
       });
-      const responseData: { count: number } = response.data;
+      const responseData = response.data;
       console.log(responseData);
       return responseData;
     } catch (error) {
@@ -114,7 +113,7 @@ export const useMongoDB = () => {
       const response: AxiosResponse = await axios.post("/api/delete-site", {
         siteId,
       });
-      const responseData: Site = response.data;
+      const responseData = response.data;
       console.log(responseData);
       return responseData;
     } catch (error) {

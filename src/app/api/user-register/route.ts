@@ -1,5 +1,6 @@
 import prisma from "@/libs/prismadb";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   // try {
@@ -17,7 +18,7 @@ export async function POST(request: Request) {
   });
 
   if (exist) {
-    return Response.json(
+    return NextResponse.json(
       { statusText: "Email already exists" },
       { status: 400 }
     );
@@ -32,13 +33,13 @@ export async function POST(request: Request) {
       },
     });
     console.log(user);
-
-    //   return Response.json(user);
+    if (user) {
+      return NextResponse.json({ statusText: "ok" }, { status: 200 });
+    } else {
+      return NextResponse.json(
+        { error: "Internal Server Error" },
+        { status: 500 }
+      );
+    }
   }
-  // } catch (e) {
-  //   console.error(e);
-  //   if (e instanceof Error) {
-  //     return new Error(e.message);
-  //   }
-  // }
 }
