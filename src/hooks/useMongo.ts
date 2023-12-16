@@ -20,7 +20,8 @@ export const useMongoDB = () => {
         detailsSet,
         siteImgSet,
       });
-      const responseData: Site = response.data;
+      console.log(response);
+      const responseData = response.data;
       console.log(responseData);
       return responseData;
     } catch (error) {
