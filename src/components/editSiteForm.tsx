@@ -71,11 +71,10 @@ const EditSiteForm = ({ site }: { site: Site }) => {
 
     const response = await updateSite(formValues, site.id);
     if (response) {
-      console.log(response);
-      setIsEditing(false);
       router.push("/");
     } else {
       setError("Oops! Site update failed");
+      setIsEditing(false);
     }
   };
 
@@ -86,11 +85,10 @@ const EditSiteForm = ({ site }: { site: Site }) => {
     }
     const response = await deleteSite(site.id);
     if (response) {
-      console.log(response);
-      setIsDeleting(false);
       router.push("/");
     } else {
       setError("Oops! Site delete failed!");
+      setIsEditing(false);
     }
   };
 

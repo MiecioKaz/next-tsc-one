@@ -42,7 +42,6 @@ const DisplayList = async ({
             Province:
             <span className="text-2xl font-bold"> {province}</span>
           </h2>
-          {/* {!(sites instanceof Error) && sites.length !== 0 && ( */}
           <ul className="w-full space-y-3 mt-6">
             {sites.map((site) => (
               <Link
@@ -77,16 +76,13 @@ const DisplayList = async ({
               </Link>
             ))}
           </ul>
-          {/* // )} */}
         </div>
       </>
     );
   } else {
     return (
-      <div className="mt-32 w-2/3 mx-auto">
-        <h1 className="text-center text-2xl text-red-600 font-semibold">
-          No sites has been included yet for {province} province.
-        </h1>
+      <div className="mt-32 w-2/3 mx-auto text-center text-2xl text-red-600 font-semibold">
+        No sites has been included yet for {province} province.
       </div>
     );
   }
