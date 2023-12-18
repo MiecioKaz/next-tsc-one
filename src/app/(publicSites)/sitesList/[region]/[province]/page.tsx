@@ -32,7 +32,7 @@ const DisplayList = async ({
     province
   );
 
-  if (sites) {
+  if (sites && !(sites instanceof Error) && sites.length !== 0) {
     return (
       <>
         <div className="mt-32 w-2/3 mx-auto">
@@ -42,44 +42,52 @@ const DisplayList = async ({
             Province:
             <span className="text-2xl font-bold"> {province}</span>
           </h2>
-          {!(sites instanceof Error) && sites.length !== 0 && (
-            <ul className="w-full space-y-3 mt-6">
-              {sites.map((site) => (
-                <Link
-                  href={`/siteDisplay/${site.id}`}
-                  scroll={false}
-                  className="hover:text-cyan-500"
-                  key={site.id}
-                >
-                  <li className="w-full border-2 py-6 bg-white">
-                    <div className="w-10/12 mx-auto text-center">
-                      <h2 className="">
-                        Name:
-                        <span className="text-xl font-bold"> {site.name}</span>
-                      </h2>
-                      <p className="">
-                        Address:
-                        <span className="text-lg font-medium">
-                          {" "}
-                          {site.address}
-                        </span>
-                      </p>
+          {/* {!(sites instanceof Error) && sites.length !== 0 && ( */}
+          <ul className="w-full space-y-3 mt-6">
+            {sites.map((site) => (
+              <Link
+                href={`/siteDisplay/${site.id}`}
+                scroll={false}
+                className="hover:text-cyan-500"
+                key={site.id}
+              >
+                <li className="w-full border-2 py-6 bg-white">
+                  <div className="w-10/12 mx-auto text-center">
+                    <h2 className="">
+                      Name:
+                      <span className="text-xl font-bold"> {site.name}</span>
+                    </h2>
+                    <p className="">
+                      Address:
+                      <span className="text-lg font-medium">
+                        {" "}
+                        {site.address}
+                      </span>
+                    </p>
 
-                      <p className="">
-                        Description:
-                        <span className="text-lg font-medium">
-                          {" "}
-                          {site.description}
-                        </span>
-                      </p>
-                    </div>
-                  </li>
-                </Link>
-              ))}
-            </ul>
-          )}
+                    <p className="">
+                      Description:
+                      <span className="text-lg font-medium">
+                        {" "}
+                        {site.description}
+                      </span>
+                    </p>
+                  </div>
+                </li>
+              </Link>
+            ))}
+          </ul>
+          {/* // )} */}
         </div>
       </>
+    );
+  } else {
+    return (
+      <div className="mt-32 w-2/3 mx-auto">
+        <h1 className="text-center text-2xl text-red-600 font-semibold">
+          No sites has been included yet for {province} province.
+        </h1>
+      </div>
     );
   }
 };

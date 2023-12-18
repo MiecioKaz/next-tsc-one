@@ -8,7 +8,7 @@ export default function PublicSitesLayout({
 }) {
   return (
     <>
-      <div className="w-screen h-screen">
+      <div className="relative w-screen h-screen">
         <Image
           src={background}
           fill

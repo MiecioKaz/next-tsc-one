@@ -66,7 +66,7 @@ export default async function RootLayout({
             </nav>
           </header>
 
-          <main className="">{children}</main>
+          <main>{children}</main>
         </NextAuthProvider>
       </body>
     </html>
