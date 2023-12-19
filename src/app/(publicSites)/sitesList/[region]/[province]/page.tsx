@@ -35,7 +35,7 @@ const DisplayList = async ({
   if (sites && !(sites instanceof Error) && sites.length !== 0) {
     return (
       <>
-        <div className="mt-32 w-2/3 mx-auto">
+        <div className="mt-44 w-2/3 mx-auto">
           <h2 className="text-center">
             Region:
             <span className="text-2xl font-bold"> {region}</span> _______
@@ -81,7 +81,7 @@ const DisplayList = async ({
     );
   } else {
     return (
-      <div className="mt-32 w-2/3 mx-auto text-center text-2xl text-red-600 font-semibold">
+      <div className="mt-52 w-2/3 mx-auto text-center text-2xl text-red-600 font-semibold">
         No sites has been included yet for {province} province.
       </div>
     );
